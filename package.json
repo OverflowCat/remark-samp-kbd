@@ -1,0 +1,26 @@
+{
+  "name": "remark-sample-kbd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "retext": "^9.0.0",
+    "unist-util-visit": "^5.0.0",
+    "vfile-reporter": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "@types/unist": "^3.0.2",
+    "rehype-stringify": "^10.0.0",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.0.0",
+    "typescript": "^5.2.2"
+  }
+}
