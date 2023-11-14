@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 import { retext } from "retext";
 import { reporter } from "vfile-reporter";
-import retextSampleKbd from "./index.js";
+import remarkSampleKbd from "./index.js";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
@@ -9,10 +9,10 @@ import remarkParse from "remark-parse";
 const buffer = readFileSync("example.md");
 
 retext()
-  .use(retextSampleKbd)
   .use(remarkParse)
-  .use(remarkRehype)
-  .use(rehypeStringify)
+  .use(remarkSampleKbd)
+  .use(remarkRehype, { allowDangerousHtml: true })
+  .use(rehypeStringify, { allowDangerousHtml: true })
   .process(buffer)
   .then((file) => {
     console.error(reporter(file));

@@ -1,5 +1,6 @@
-This is `code`.
+This is
+`code1`,````` `code2` `````,
+````` code`3 `````, ````` code`4 `````.
 
-This is ``sample``.
-
-Let's make double backticks an HTML `<samp>` tag!
+And we have ``sample code``, keyboard shortcut ```Ctrl```+```Shift```+```C```,
+and variable like ````x````!
