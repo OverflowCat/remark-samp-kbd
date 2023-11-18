@@ -9,7 +9,7 @@ import remarkParse from "remark-parse";
 const buffer = readFileSync("example.md");
 
 retext()
-  .use(remarkParse)
+.use(remarkParse)
   .use(remarkSampleKbd)
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypeStringify, { allowDangerousHtml: true })

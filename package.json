@@ -1,14 +1,18 @@
 {
-  "name": "remark-sample-kbd",
+  "name": "remark-samp-kbd",
   "version": "1.0.0",
-  "description": "",
+  "description": "Add <samp>, <kbd> and <var> support to Markdown using remark",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "markdown",
+    "remark",
+    "plugin"
+  ],
+  "author": "OverflowCat",
   "license": "ISC",
   "dependencies": {
     "retext": "^9.0.0",

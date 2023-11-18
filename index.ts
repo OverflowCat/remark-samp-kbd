@@ -71,46 +71,40 @@ export default function remarkSampleKbd() {
           return;
         }
 
-        // (node as RemarkNode).type = tag;
-        // node.children = [
-        //   {
-        //     type: "text",
-        //     value: node.value,
-        //     position: node.position,
-        //   },
-        // ];
         const start = node.position.start;
         const end = node.position.end;
         const seg1 = {
           line: start.line,
           column: start.column + leftCount,
           offset: start.offset + leftCount,
-        }
+        };
         const seg2 = {
           line: end.line,
           column: end.column - rightCount,
           offset: end.offset - rightCount,
-        }
+        };
         const newNodes = [
           {
             type: "html",
             value: `<${tag}>`,
             position: {
-              start, end: seg1
-            }
+              start,
+              end: seg1,
+            },
           },
           {
             type: "text",
             value: node.value,
-            position: { start: seg1, end: seg2 }
+            position: { start: seg1, end: seg2 },
           },
           {
             type: "html",
             value: `</${tag}>`,
-            position: { start: seg2, end }
+            position: { start: seg2, end },
           },
         ];
         parent.children.splice(index, 1, ...newNodes);
+        console.info(parent);
       }
     );
   };
