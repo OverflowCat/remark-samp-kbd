@@ -1,10 +1,11 @@
 {
   "name": "remark-samp-kbd",
-  "version": "1.0.0",
+  "version": "0.1.2",
   "description": "Add <samp>, <kbd> and <var> support to Markdown using remark",
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -16,15 +17,15 @@
   "license": "ISC",
   "dependencies": {
     "retext": "^9.0.0",
-    "unist-util-visit": "^5.0.0",
-    "vfile-reporter": "^8.1.0"
+    "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20.9.0",
-    "@types/unist": "^3.0.2",
+    "vfile-reporter": "^8.1.1",
+    "@types/node": "^20.16.5",
+    "@types/unist": "^3.0.3",
     "rehype-stringify": "^10.0.0",
     "remark-parse": "^11.0.0",
-    "remark-rehype": "^11.0.0",
-    "typescript": "^5.2.2"
+    "remark-rehype": "^11.1.0",
+    "typescript": "^5.6.2"
   }
 }

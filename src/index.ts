@@ -49,9 +49,9 @@ export default function remarkSampleKbd() {
             `Mismatched backticks at ${node.position.start.line}:${node.position.start.column}`
           );
         }
-        console.log(leftCount, rightCount);
+        // console.log(leftCount, rightCount);
         const count = leftCount % 4;
-        console.log(`We have 4k+${count} backticks`);
+        // console.log(`We have 4k+${count} backticks`);
         // Use 4k+1 to 4k+4 numbers of ` to represent different semantics — code fragment (<code>), program output (<samp>), keyboard key (kbd) and mathematical variable / simple formula (var).
         const tag = [
           "var", // 4k+4
@@ -65,7 +65,7 @@ export default function remarkSampleKbd() {
           );
           return;
         }
-        console.log(`We have ${tag} tag`);
+        // console.log(`We have ${tag} tag`);
         if (tag === "code") {
           // inlineCode is already code
           return;
