@@ -30,14 +30,34 @@ interface InlineCodeParentNode extends RemarkNode {
   children: [InlineCodeNode, ...RemarkNode[]];
 }
 
+export interface RemarkFile {
+  toString: () => string;
+}
+
+export interface HtmlNode extends RemarkNode {
+  type: 'html';
+  value: string;
+}
+
+interface TextNode extends RemarkNode {
+  type: 'text';
+  value: string;
+}
+
+
 export default function remarkSampleKbd() {
-  return (tree: any, file) => {
+  type SegmentPosition = {
+    line: number;
+    column: number;
+    offset: number;
+  };
+
+  return (tree: RemarkNode, file: RemarkFile) => {
     const text = file.toString();
     visit(
       tree,
       "inlineCode",
       (node: InlineCodeNode, index: number, parent: InlineCodeParentNode) => {
-        console.info(node);
         let leftCount = 0,
           rightCount = 0;
         let i = node.position.start.offset;
@@ -49,7 +69,6 @@ export default function remarkSampleKbd() {
             `Mismatched backticks at ${node.position.start.line}:${node.position.start.column}`
           );
         }
-        // console.log(leftCount, rightCount);
         const count = leftCount % 4;
         // console.log(`We have 4k+${count} backticks`);
         // Use 4k+1 to 4k+4 numbers of ` to represent different semantics — code fragment (<code>), program output (<samp>), keyboard key (kbd) and mathematical variable / simple formula (var).
@@ -73,17 +92,17 @@ export default function remarkSampleKbd() {
 
         const start = node.position.start;
         const end = node.position.end;
-        const seg1 = {
+        const seg1: SegmentPosition = {
           line: start.line,
           column: start.column + leftCount,
           offset: start.offset + leftCount,
         };
-        const seg2 = {
+        const seg2: SegmentPosition = {
           line: end.line,
           column: end.column - rightCount,
           offset: end.offset - rightCount,
         };
-        const newNodes = [
+        const newNodes: Array<HtmlNode | TextNode> = [
           {
             type: "html",
             value: `<${tag}>`,
@@ -104,7 +123,6 @@ export default function remarkSampleKbd() {
           },
         ];
         parent.children.splice(index, 1, ...newNodes);
-        console.info(parent);
       }
     );
   };
